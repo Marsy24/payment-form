@@ -1,9 +1,9 @@
-import { getCards } from "../../api/api";
+import { getCards } from "../../api/LS";
 import { Card } from "./Card";
 import { NewCard } from "../NewCard/NewCard";
 
 export const FetchCards = (): HTMLElement[] => {
-    const cards = getCards().map(data => Card(data))
+    const cards = getCards().map((data, index) => Card(data, index))
 
     if (cards.length > 1) return cards
 

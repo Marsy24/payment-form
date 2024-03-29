@@ -1,3 +1,3 @@
-import { SavedCard } from "../../api/types"
+import { SavedCard } from "../../api/LS"
 
-export type CreateSavedCard = ({bankLogo, brandLogo, last4, expYear, expMonth}: SavedCard) => HTMLElement
+export type CreateSavedCard = ({bankLogo, brandLogo, last4, expYear, expMonth}: SavedCard, dataIndex: number) => HTMLElement

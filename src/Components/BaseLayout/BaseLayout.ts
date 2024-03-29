@@ -11,6 +11,9 @@ import { Button } from '../Button/Button';
 import { Logo } from '../Logo/Logo';
 
 export const BaseLayout: Layout = () => {
+
+
+
     const payment = el('div', {
         className: 'payment',
         id: 'payment'
@@ -54,7 +57,10 @@ export const BaseLayout: Layout = () => {
             ],
             el('div', {
                 className: 'payment__save-card'
-            }, SaveCardLabel('Save your card for future payments'))/** panels, label */)),
+            }, SaveCardLabel('Save your card for future payments')))),
+            el('div', {
+                className: 'payment__email email'
+            }, Context.fields.emails.map(email => Field(email))),
         el('div', {
             className: 'payment__form-bottom',
             id: 'form-bottom'

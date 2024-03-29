@@ -4,7 +4,7 @@ import { CreateSavedCard } from './types';
 
 export const Card: CreateSavedCard = ({
     bankLogo, brandLogo, last4, expYear, expMonth
-}) => {
+}, dataIndex) => {
     const elements = [
         el('img', {
             className: 'card__bank-logo',
@@ -12,7 +12,8 @@ export const Card: CreateSavedCard = ({
         }),
         el('img', {
             className: 'card__brand-logo',
-            src: brandLogo
+            src: brandLogo,
+            
         }),
         el('div', {
             className: 'card__last4'
@@ -23,6 +24,7 @@ export const Card: CreateSavedCard = ({
     ]
 
     return el('div', {
-        className: 'cards_card card'
+        className: 'cards_card card',
+        'data-index': dataIndex
     }, elements)
 }

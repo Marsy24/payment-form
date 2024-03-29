@@ -8,7 +8,8 @@ export const FieldSchema = z.object({
     type: z.string(),
     placeholder: z.string(),
     className: z.string(),
-    id: z.string()
+    id: z.string(),
+    required: z.string()
 });
 
 export type TField = z.infer<typeof FieldSchema>
