@@ -1,0 +1,11 @@
+.error {
+    margin: 0;
+    text-align: center;
+    color: red;
+    margin-bottom: 10px;
+    font-size: 18px;
+
+    &.hide {
+        display: none;
+    }
+}

@@ -1,5 +1,6 @@
 import { el } from 'redom';
 import { CreateSavedCard } from './types';
+import './styles.scss'
 
 
 export const Card: CreateSavedCard = ({
@@ -17,14 +18,14 @@ export const Card: CreateSavedCard = ({
         }),
         el('div', {
             className: 'card__last4'
-        }, last4),
+        }, `...${last4}`),
         el('div', {
             className: 'card__exp'
         }, `${expMonth}/${expYear}`)
     ]
 
-    return el('div', {
-        className: 'cards_card card',
+    return el('button', {
+        className: 'cards_card card btn-reset',
         'data-index': dataIndex
     }, elements)
 }

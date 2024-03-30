@@ -1,5 +1,6 @@
 import { el } from "redom";
 import { TError } from "./types";
+import './styles.scss'
 
 export const Error: TError = ({
     tag,

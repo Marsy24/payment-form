@@ -3,16 +3,16 @@ import './styles.scss'
 
 export const NewCard = () => {
     return el('button', {
-        className: 'cards__card card new-card selected',
+        className: 'cards__card card new-card selected btn-reset',
         type: 'submit',
         onclick(event: MouseEvent) {
             event.preventDefault();
         }
     }, el('div', {
-        className: 'card__label'
+        className: 'new-card__label'
     }, [
         el('span', {
-            className: 'card__icon'
+            className: 'new-card__icon'
         }, '+'),
         el('span', {
             className: 'card__text new-card__text'

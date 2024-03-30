@@ -1,0 +1,26 @@
+$base-color-plus: #ffbb00;
+$base-color-text: #561C8A;
+$base-fz-new-card: 20px;
+$base-fz-icon: 30px;
+
+.new-card {
+    font-size: $base-fz-new-card;
+    font-weight: bold;
+
+    &__label {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    &__icon {
+        margin-right: 10px;
+        font-size: $base-fz-icon;
+        color: $base-color-plus;
+    }
+
+    &__text {
+        color: $base-color-text
+    }
+}

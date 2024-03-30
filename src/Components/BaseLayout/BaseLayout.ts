@@ -9,26 +9,25 @@ import { Context } from '../../Context/Context';
 import { Error } from '../Error/Error';
 import { Button } from '../Button/Button';
 import { Logo } from '../Logo/Logo';
+import './styles.scss'
+import { Panels } from '../Panels/Panels';
 
 export const BaseLayout: Layout = () => {
-
-
-
     const payment = el('div', {
         className: 'payment',
         id: 'payment'
     }),
-          paymentForm = el('form', {
+        paymentForm = el('form', {
             className: 'payment__form',
             id: 'form'
-          });
-    
+        });
+
     setChildren(payment, [paymentForm]);
     setChildren(paymentForm, [
         el('div', {
             className: 'payment__saved-cards',
             id: 'saved-cards'
-        }, 
+        },
             el('div', {
                 className: 'payment__cards cards',
                 id: 'cards'
@@ -36,31 +35,21 @@ export const BaseLayout: Layout = () => {
         el('div', {
             className: 'payment__new-card-form',
             id: 'new-card-form'
-        },
+        }, [
             el('div', {
                 className: 'payment__panels panels',
                 id: 'panels'
-            }, [
+            }, Panels(Context.fields))
+        ],
+            el('div', {className: 'payment__new-card-form-bottom'},
+            [
                 el('div', {
-                    className: 'panels__front panel'
-                }, injectElementInArray(
-                    Context.fields.front.map(field => Field(field)), 
-                    SimplyLabel({text: 'Valid through', className: 'payment__panel-front-label'}), 
-                    1
-                )),
+                    className: 'payment__email email'
+                }, Context.fields.emails.map(email => Field(email))),
                 el('div', {
-                    className: 'panels__back panel'
-                }, [
-                    Context.fields.back.map(field => Field(field)),
-                    SimplyLabel({text: 'Security code', className: 'payment__panel-back-label'})
-                ])
-            ],
-            el('div', {
-                className: 'payment__save-card'
-            }, SaveCardLabel('Save your card for future payments')))),
-            el('div', {
-                className: 'payment__email email'
-            }, Context.fields.emails.map(email => Field(email))),
+                    className: 'payment__save-card'
+                }, SaveCardLabel('Save your card for future payments'))
+            ])),
         el('div', {
             className: 'payment__form-bottom',
             id: 'form-bottom'
@@ -80,5 +69,6 @@ export const BaseLayout: Layout = () => {
         }, Object.values(Context.trustLogos)
             .map(logo => Logo(logo)))
     ])
+
     return payment
 }

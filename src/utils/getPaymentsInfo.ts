@@ -63,7 +63,7 @@ function getPath(): FPaymentPathImg {
     return (key: string, isOriginal: boolean = true, isPng: boolean = true) => {
         if (!key.length) return 'Key is not defined'
 
-        const path = './public/brand-logos/';
+        const path = './brands-logos/';
         return isOriginal 
         ? `${path}${fromKeyToPath(key)}-original.${isPng ? 'png' : 'svg'}`
         : `${path}${fromKeyToPath(key)}-inverted.${isPng ? 'png' : 'svg'}`
@@ -71,7 +71,7 @@ function getPath(): FPaymentPathImg {
 
 }
 
-function paySys (this: TPaymentsSystems, ccNum: number): PaymentInfo {
+function paySysInfo (this: TPaymentsSystems, ccNum: number): PaymentInfo {
     const paymentInfo: PaymentInfo = {
         payment: '',
         path: () => 'No information found',
@@ -94,6 +94,6 @@ function paySys (this: TPaymentsSystems, ccNum: number): PaymentInfo {
     return paymentInfo;
 }
 
-const getPaymentsInfo = paySys.bind(paymentsSystems)
+const getPaymentsInfo = paySysInfo.bind(paymentsSystems)
 
 export { getPaymentsInfo }
