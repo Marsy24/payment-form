@@ -1,5 +1,5 @@
 import { IErrorProps } from "../Components/Error/interfaces"
-import { TFields } from "../Components/Panels/types."
+import { TFields } from "../Components/Panels/types"
 import { Logos } from "../Components/Logo/types"
 import { getLinkLogo } from "../utils/getLinkLogo"
 
@@ -16,7 +16,8 @@ export class Context {
                 placeholder: '0000  '.repeat(4).trim(),
                 className: 'panel__field-number-card panel__field',
                 id: 'card-number-input',
-                required: 'true'
+                required: 'true',
+                maxLength: 23
             },
             {
                 type: 'text',
@@ -27,7 +28,8 @@ export class Context {
                 placeholder: 'MM',
                 className: 'panel__date-field panel__month-field panel__field',
                 id: 'card-month-input',
-                required: 'true'
+                required: 'true',
+                maxLength: 2
             },
             {
                 type: 'text',
@@ -38,7 +40,8 @@ export class Context {
                 placeholder: 'YY',
                 className: 'panel__date-field panel__year-field panel__field',
                 id: 'card-year-input',
-                required: 'true'
+                required: 'true',
+                maxLength: 2
             },
         ],
         back: [
@@ -51,7 +54,8 @@ export class Context {
                 placeholder: 'CVV',
                 className: 'panel__field-code panel__field',
                 id: 'card-scs',
-                required: 'true'
+                required: 'true',
+                maxLength: 3
             }
         ],
         emails: [
@@ -64,7 +68,8 @@ export class Context {
                 placeholder: 'Enter your E-mail for check',
                 className: 'panel__field-email panel__field',
                 id: 'email-input',
-                required: 'true'
+                required: 'true',
+                maxLength: 30
             }
         ]
     }

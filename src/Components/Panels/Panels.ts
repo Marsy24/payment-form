@@ -1,5 +1,5 @@
 import { el } from 'redom';
-import { FCPanels } from './types.';
+import { FCPanels } from './types';
 import { Field } from '../Field/Field';
 import { Context } from '../../Context/Context';
 import { injectElementInArray } from '../../utils/injectElementInArray';
@@ -8,7 +8,7 @@ import './styles.scss';
 
 
 
-export const Panels: FCPanels = (fields) => {
+export const Panels: FCPanels = (fields, onblur, onfocus, oninput) => {
     const frontPanel = el('div', {
         className: 'panels__front-panel front-panel panel'
     }, [
@@ -21,7 +21,7 @@ export const Panels: FCPanels = (fields) => {
         el('div', {
             className: 'front-panel__fields fields'
         }, injectElementInArray(
-            Context.fields.front.map(field => Field(field)),
+            Context.fields.front.map(field => Field(field, onblur, onfocus, oninput)),
             SimplyLabel({ text: 'Valid through', className: 'panel__front-label' }),
             1
         ))
@@ -30,7 +30,7 @@ export const Panels: FCPanels = (fields) => {
     const backPanel = el('div', {
         className: 'panels__back-panel back-panel panel'
     }, [
-        fields.back.map(field => Field(field)),
+        fields.back.map(field => Field(field, onblur, onfocus, oninput)),
         el('label', {
             className: 'panel__label-code code'
         }, [

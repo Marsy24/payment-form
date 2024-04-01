@@ -4,10 +4,7 @@ import './styles.scss'
 export const NewCard = () => {
     return el('button', {
         className: 'cards__card card new-card selected btn-reset',
-        type: 'submit',
-        onclick(event: MouseEvent) {
-            event.preventDefault();
-        }
+        type: 'submit'
     }, el('div', {
         className: 'new-card__label'
     }, [

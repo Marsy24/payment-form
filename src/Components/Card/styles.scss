@@ -1,5 +1,6 @@
 $base-border-shadow: inset 0 0 0 1px gray;
 $selected-border-shadow: inset 0 0 0 3px #ffbb00;
+$hover-border-shadow: inset 0 0 0 3px #561C8A;
 $base-color-text: gray;
 
 .card {
@@ -15,6 +16,17 @@ $base-color-text: gray;
     border-radius: 16px;
     box-shadow: $base-border-shadow;
     color: $base-color-text;
+    transition: box-shadow .3s ease, opacity .3s ease;
+
+    &:hover, &:focus-within {
+        outline: none;
+        border: none;
+        box-shadow: $hover-border-shadow;
+    }
+
+    &:active {
+        box-shadow: $selected-border-shadow;
+    }
     
     &__bank-logo {
         position: absolute;

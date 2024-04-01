@@ -14,7 +14,6 @@ export const Card: CreateSavedCard = ({
         el('img', {
             className: 'card__brand-logo',
             src: brandLogo,
-            
         }),
         el('div', {
             className: 'card__last4'

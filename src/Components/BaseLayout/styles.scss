@@ -13,6 +13,11 @@ input {
     outline: none;
 }
 
+button.noClick {
+    pointer-events: none;
+    opacity: .5;
+}
+
 .payment {
     padding: 30px 0;
     &__form {
@@ -39,6 +44,7 @@ input {
 
     &__new-card-form {
         margin-bottom: 15px;
+        transition: opacity .3s ease, height .3s ease;
     }
 
     &__panels {
