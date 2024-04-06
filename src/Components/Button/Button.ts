@@ -10,6 +10,7 @@ export const Button: TButton = ({
     return el('button', {
         className: 'payment__btn-pay btn-reset pay',
         type: type,
-        onclick: handleClick
+        disabled: 'disabled',
+        onclick: handleClick,
     }, text)
 }

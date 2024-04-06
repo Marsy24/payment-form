@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "redom": "^4.0.0",
+    "tippy.js": "^6.3.7",
     "zod": "^3.22.4"
   }
 }

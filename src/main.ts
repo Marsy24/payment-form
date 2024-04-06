@@ -1,5 +1,6 @@
 import { App } from "./App";
-import { validateCardNumber } from "./utils/validateCardNumber";
+import { createNotate } from "./utils/createNotate";
 
-document.getElementById('app')?.append(App())
-console.log(validateCardNumber('2200700992160282'))
+document.getElementById('app')?.append(App());
+
+Array.from(createNotate()).forEach(item => document.body.prepend(item))

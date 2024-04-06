@@ -18,7 +18,7 @@ $base-back-befor-bg-color: #444;
         height: 50px;
         object-fit: contain;
         object-position: 0 0;
-        transform: opacity .3s ease, transform .3s ease;
+        transition: opacity .3s ease, transform .3s ease;
     }
 
     &__brand-logo {
@@ -105,5 +105,11 @@ $base-back-befor-bg-color: #444;
         display: flex;
         flex-direction: column;
         font-size: 16.5px;
+    }
+
+    &__field-email {
+        padding: 10px;
+        width: 250px;
+        margin-bottom: 10px;
     }
 }

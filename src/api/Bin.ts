@@ -1,12 +1,13 @@
 import { z } from "zod"
+import { validateResponse } from "../utils/validateResponse"
 
-export const BINIssuerSchema = z.object({
+export const BINIssuerScheme = z.object({
     name: z.string(),
     phone: z.string(),
     website: z.string()
 })
 
-export const BINCountrySchema = z.object({
+export const BINCountryScheme = z.object({
     alpha2: z.string(),
     alpha3: z.string(),
     capital: z.string(),
@@ -25,11 +26,11 @@ export const BINCountrySchema = z.object({
     subregion: z.string()
 })
 
-export const BINSchema = z.object({
+export const BINScheme = z.object({
     brand: z.string(),
-    country: BINCountrySchema,
+    country: BINCountryScheme,
     currency: z.string(),
-    issuer: BINIssuerSchema,
+    issuer: BINIssuerScheme,
     length: z.number(),
     level: z.string(),
     number: z.number(),
@@ -38,16 +39,16 @@ export const BINSchema = z.object({
     valid: z.boolean()
 })
 
-export const BINCheckerResponseSchema = z.object({
-    BIN: BINSchema,
+export const BINCheckerResponseScheme = z.object({
+    BIN: BINScheme,
     code: z.number(),
     success: z.boolean()
 })
 
-export type BINIssuer = z.infer<typeof BINIssuerSchema>
-export type BINCountry= z.infer<typeof BINCountrySchema>
-export type BIN = z.infer<typeof BINSchema>
-export type BINChekerResponse = z.infer<typeof BINCheckerResponseSchema>
+export type BINIssuer = z.infer<typeof BINIssuerScheme>
+export type BINCountry= z.infer<typeof BINCountryScheme>
+export type BIN = z.infer<typeof BINScheme>
+export type BINChekerResponse = z.infer<typeof BINCheckerResponseScheme>
 
 export const BINChecker = (bin: string): Promise<BINChekerResponse> => {
     return fetch(`https://bin-ip-checker.p.rapidapi.com/?bin=${bin}`, {
@@ -59,6 +60,7 @@ export const BINChecker = (bin: string): Promise<BINChekerResponse> => {
         },
         body: JSON.stringify({ bin })
     })
+        .then(validateResponse)
         .then(res => res.json())
-        .then(data => BINCheckerResponseSchema.parse(data))
+        .then(data => BINCheckerResponseScheme.parse(data))
 }

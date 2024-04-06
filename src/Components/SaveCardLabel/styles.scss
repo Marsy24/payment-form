@@ -1,0 +1,66 @@
+.payment__save-card-checkbox[type="checkbox"]:checked, 
+.payment__save-card-checkbox[type="checkbox"]:not(:checked)
+{
+    position: absolute;
+    left: -9999px;
+}
+
+.payment__save-card-checkbox[type="checkbox"]:checked + .payment__save-card-text, 
+.payment__save-card-checkbox[type="checkbox"]:not(:checked) + .payment__save-card-text {
+    display: inline-block;
+    position: relative;
+    padding-left: 28px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.payment__save-card-checkbox[type="checkbox"]:checked + .payment__save-card-text:before, 
+.payment__save-card-checkbox[type="checkbox"]:not(:checked) + .payment__save-card-text:before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #dddddd;
+    background-color: #ffffff;
+}
+
+.payment__save-card-checkbox[type="checkbox"]:checked + .payment__save-card-text:before, 
+.payment__save-card-checkbox[type="checkbox"]:not(:checked) + .payment__save-card-text:before {
+    border-radius: 2px;
+}
+
+.payment__save-card-checkbox[type="checkbox"]:checked + .payment__save-card-text:after, 
+.payment__save-card-checkbox[type="checkbox"]:not(:checked) + .payment__save-card-text:after {
+    content: "";
+    position: absolute;
+    transition: all 0.2s ease;
+}
+
+.payment__save-card-checkbox[type="checkbox"]:checked + .payment__save-card-text:after, 
+.payment__save-card-checkbox[type="checkbox"]:not(:checked) + .payment__save-card-text:after {
+    left: 3px;
+    top: 4px;
+    width: 10px;
+    height: 5px;
+    border-radius: 1px;
+    border-left: 4px solid #616161;
+    border-bottom: 4px solid #616161;
+    transform: rotate(-45deg);
+}
+
+
+.payment__save-card-checkbox[type="checkbox"]:not(:checked) + .payment__save-card-text:after {
+    opacity: 0;
+}
+
+.payment__save-card-checkbox[type="checkbox"]:checked + .payment__save-card-text:after {
+    opacity: 1;
+}
+
+
+.payment__save-card-checkbox[type="checkbox"]:focus-visible + .payment__save-card-text:before {
+
+    box-shadow: inset 0 0 0 2px #ffbb00;
+}

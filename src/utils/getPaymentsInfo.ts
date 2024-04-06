@@ -66,7 +66,7 @@ function paySysInfo(this: TDictionaryPayments, ccNum: string, withBin?: boolean)
         value.forEach(item => {
             if (item.test(ccNum)) {
                 minPaymentInfo.nameLocalPayment = key
-                minPaymentInfo.paths.brandLogoPath = fromKeyToPath(true, false, false, true, key)
+                minPaymentInfo.paths.brandLogoPath = fromKeyToPath(true, false, false, false, key)
                 minPaymentInfo.results.minResult = true;
             }
         })
@@ -75,6 +75,8 @@ function paySysInfo(this: TDictionaryPayments, ccNum: string, withBin?: boolean)
     if (withBin) {
         return BINChecker(ccNum)
             .then(data => {
+                if (!data.success) return {...data, ...minPaymentInfo}
+                
                 for (const [key, value] of Object.entries(DictionaryBanksColor)) {
                     if (key === data.BIN.issuer.name) {
                         minPaymentInfo.color = value;
@@ -82,11 +84,11 @@ function paySysInfo(this: TDictionaryPayments, ccNum: string, withBin?: boolean)
                     }
                 }
 
-                minPaymentInfo.paths.bankLogoPath = fromKeyToPath(true, true, true, true, data.BIN.issuer.name)
-                minPaymentInfo.paths.brandLogoPath = minPaymentInfo.paths.brandLogoPath!.replace('original', 'inverted');
+                minPaymentInfo.paths.bankLogoPath = fromKeyToPath(true, true, true, false, data.BIN.issuer.name)
+                minPaymentInfo.paths.brandLogoPath = minPaymentInfo.paths.brandLogoPath ? minPaymentInfo.paths.brandLogoPath.replace('original', 'inverted') : '';
                 minPaymentInfo.results.fullResult = true;
                 return {...data, ...minPaymentInfo}
-            })
+        })
     }
 
     return minPaymentInfo;

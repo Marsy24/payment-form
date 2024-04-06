@@ -13,9 +13,25 @@ input {
     outline: none;
 }
 
+.tippy-content {
+    background-color: red;
+}
+.tippy-arrow {
+    color: red !important;
+}
+
 button.noClick {
     pointer-events: none;
     opacity: .5;
+}
+
+.notation {
+    position: absolute;
+    max-width: 650px;
+}
+
+.notation.right {
+    right: 60px;
 }
 
 .payment {
@@ -29,8 +45,10 @@ button.noClick {
 
     &__saved-cards {
         margin-bottom: 15px;
+        display: flex;
 
         & > .cards {
+            flex: 1;
             display: flex;
             align-items: center;
         }
@@ -45,6 +63,16 @@ button.noClick {
     &__new-card-form {
         margin-bottom: 15px;
         transition: opacity .3s ease, height .3s ease;
+
+        & input:not([type="checkbox"]) {
+            box-shadow: inset 0 0 0 1px #ccc;
+
+            transition: border-color .3s ease, background-color .3s ease, box-shadow .3s ease;
+
+            &:focus-within {
+                box-shadow: inset 0 0 0 3px #ffbb00;
+            }
+        }
     }
 
     &__panels {
@@ -70,10 +98,6 @@ button.noClick {
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: center;
-
-        &:not(:last-child) {
-            margin-right: 15px;
-        }
+        justify-content: space-between;
     }
 }
